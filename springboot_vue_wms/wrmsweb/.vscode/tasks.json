@@ -1,0 +1,13 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "serve",
+			"path": "wrms-web",
+			"problemMatcher": [],
+			"label": "npm: serve - wrms-web",
+			"detail": "vue-cli-service serve"
+		}
+	]
+}

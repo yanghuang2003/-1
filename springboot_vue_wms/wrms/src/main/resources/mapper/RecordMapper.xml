@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.wrms.mapper.RecordMapper">
+<select id="listAll" resultType="com.ruoyi.wrms.pojo.RecordRes">
+    select  a.*,b.name goodsname,c.name storagename,d.name goodstypename,
+            (select u.name from user u where id = a.user_id)username,
+            (select u.name from user u where id = a.admin_id)adminname
+    from record a,goods b,storage c,goods_type d where a.goods=b.id and b.storage=c.id and b.goods_type = d.id ${ew.customSqlSegment}
+</select>
+    <select id="listPage" resultType="com.ruoyi.wrms.pojo.RecordRes">
+        select a.*, b.name goodsname, c.name storagename, d.name goodstypename,
+        u1.name as username, u2.name as adminname
+        from record a
+        join goods b on a.goods = b.id
+        join storage c on b.storage = c.id
+        join goods_type d on b.goods_type = d.id
+        left join user u1 on a.user_id = u1.id
+        left join user u2 on a.admin_id = u2.id
+        <where>
+            <if test="params.goodsname != ''">
+                AND b.name LIKE CONCAT('%', #{params.goodsname}, '%')
+            </if>
+            <if test="params.storagename != ''">
+                AND c.id = #{params.storagename}
+            </if>
+            <if test="params.goodstypename != ''">
+                AND d.id = #{params.goodstypename}
+            </if>
+        </where>
+    </select>
+</mapper>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/wrms/wrms.iml" filepath="$PROJECT_DIR$/wrms/wrms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wrms-web.iml" filepath="$PROJECT_DIR$/wrms-web.iml" />
+    </modules>
+  </component>
+</project>
